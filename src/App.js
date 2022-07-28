@@ -1,9 +1,11 @@
 import './App.css';
+import Home from './Container/Home';
+
 
 function App() {
   return (
     <div className="App">
-      This is a new project
+      <Home />
     </div>
   );
 }

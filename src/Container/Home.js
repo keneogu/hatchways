@@ -16,12 +16,18 @@ const Home = () => {
 		dispatch(fetchAsyncStudent());
 	},[dispatch]);
 
-	
 	let content;
 
+		if(!students) {
+			return null;
+		} else if (students) {
+			content = students.map(student => <StudentCard key={student.id} {...student} />);
+		}else if (studentLoading === true) {
+			content = <p>"Loading..."</p>
+		}else if(studentError === true) {
+			content = <p>Error 404</p>
+		}
 		
-	
-
 	return (
 		<div>
 			{content}

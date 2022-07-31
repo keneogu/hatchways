@@ -13,6 +13,7 @@ export const fetchAsyncStudent = createAsyncThunk("student/fetchAsyncStudent", a
 
 const initialState = {
 	student: {},
+	studentContainer: {},
 	isLoading: false,
 	isError: false,
 }
@@ -20,6 +21,11 @@ const initialState = {
 const studentSlice = createSlice({
 	name: 'student',
 	initialState,
+	reducers: {
+		filtered: (state, {payload}) => {
+			state.student.students = state.studentContainer.students.filter(stu => stu.firstName.toLowerCase().includes(payload) || stu.lastName.toLowerCase().includes(payload));
+		}
+	},
 	extraReducers: {
 		[fetchAsyncStudent.pending]: (state) => {
 			state.isLoading = true;
@@ -29,6 +35,7 @@ const studentSlice = createSlice({
 			console.log(state);
 			console.log("fetched successfully");
 			state.student = payload;
+			state.studentContainer = payload;
 		},
 		[fetchAsyncStudent.rejected]: (state) => {
 			state.isError = true;
@@ -40,5 +47,6 @@ const studentSlice = createSlice({
 export const getAllStudents = (state) => state.student.student;
 export const getLoading = (state) => state.student.isLoading;
 export const getError = (state) => state.student.isError;
+export const { filtered } = studentSlice.actions;
 
 export default studentSlice.reducer;

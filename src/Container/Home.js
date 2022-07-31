@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchAsyncStudent, getAllStudents, getLoading, getError} from '../redux/studentSlice';
 import StudentCard from './StudentCard';
+import Search from '../Components/Search';
 
 const Home = () => {
 	const { students } = useSelector(getAllStudents);
@@ -29,7 +30,8 @@ const Home = () => {
 		}
 		
 	return (
-		<div>
+		<div className="home">
+			<Search />
 			{content}
 		</div>
 	)

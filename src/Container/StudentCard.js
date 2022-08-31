@@ -36,6 +36,14 @@ const StudentCard = ({
     setNewTag(e.target.value);
   };
 
+  const submitTag = (e) => {
+    const newTagList = [...tag, newTag];
+    setTag(newTagList);
+    setNewTag("");
+    e.preventDefault();
+    console.log(setTag);
+  };
+
   return (
     <div className="card-container">
       <div className="inner-card">

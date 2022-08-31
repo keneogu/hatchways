@@ -5,7 +5,14 @@
   list-style: none;
   text-decoration: none;
 }
-
+body{
+  background-color: #eeeeee;
+}
+.home {
+  background-color: #ffffff;
+  width: 1200px;
+  margin: 50px auto;
+}
 .card-container {
   display: flex;
   flex: 0 0 100%;
@@ -14,7 +21,10 @@
 
 .inner-card {
   display: flex;
-  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  /* align-items: center; */
+  /* justify-content: center; */
   margin: 5px 20px;
   padding: 20px 15px;
   border-bottom: 2px solid #eeeeee;
@@ -34,7 +44,13 @@ img {
 }
 
 .text-contain {
+  display: flex;
+  justify-content: space-between;
   margin-left: 20px;
+}
+
+.text-1-contain {
+  flex-direction: column;
 }
 
 .h-contain {
@@ -54,6 +70,17 @@ img {
 }
 
 .search:focus-visible {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.stu-btn {
+  width: 30px;
+  height: 30px;
+  color: #000000;
+}
+.tag {
   outline: none;
   border: none;
   border-bottom: 2px solid #eeeeee;

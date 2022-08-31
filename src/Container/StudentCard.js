@@ -10,16 +10,16 @@ const StudentCard = ({
   pic,
   grades,
 }) => {
-
   let average = grades.map(Number).reduce((x, y) => x + y) / 2;
 
-	const [open, setOpen] = useState(false);
-	const [tag, setTag] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [newTag, setNewTag] = useState("")
+  const [tag, setTag] = useState([]);
 
   const buttonChange = () => {
     setOpen(!open);
   };
-
+  
   const plusbtn = (
     <button className="stu-btn" onClick={buttonChange}>
       <AddIcon />
@@ -31,6 +31,10 @@ const StudentCard = ({
       <MinusIcon />
     </button>
   );
+
+  const handleChange = (e) => {
+    setNewTag(e.target.value);
+  };
 
   return (
     <div className="card-container">
@@ -65,12 +69,25 @@ const StudentCard = ({
                     );
                   })}
               </div>
+              {tagsRender}
+              <form onSubmit={submitTag}>
+                <input
+                  type="text"
+                  className="tag"
+                  placeholder="add tag"
+                  value={newTag}
+                  onChange={handleChange}
+                />
+                <button type="submit" hidden>
+                  Add tag
+                </button>
+              </form>
             </div>
           </div>
           <div>
-            <button className="stu-btn" onClick={buttonChange}>
+            <span className="stu-btn" onClick={buttonChange}>
               {open ? minusbtn : plusbtn}
-            </button>
+            </span>
           </div>
         </div>
       </div>

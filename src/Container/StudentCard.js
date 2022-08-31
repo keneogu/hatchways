@@ -36,6 +36,16 @@ const StudentCard = ({
     setNewTag(e.target.value);
   };
 
+  let tagsRender;
+
+  if (!tag) {
+    return null;
+  } else {
+    tagsRender = tag.map((item) => {
+      return <p key={item}>{item}</p>;
+    });
+  }
+
   const submitTag = (e) => {
     const newTagList = [...tag, newTag];
     setTag(newTagList);
